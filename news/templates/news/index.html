@@ -1,25 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>{{ title }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+
 <body>
-    <div class="container  vh-100 max-w-1200" style="display:flex; align-items: center; justify-content: center; flex-direction: column;;">
-        <h1 style="margin-bottom: 50px;">{{ title }}</h1>
-        {% for item in news %}
-            <div class="card shadow-lg" style="width: 18rem;">
-                <img src="https://gas-kvas.com/uploads/posts/2023-02/1675489758_gas-kvas-com-p-izobrazheniya-i-kartinki-na-fonovii-risuno-41.jpg" class="card-img-top" alt="smth">
-                <div class="card-body">
-                <h5 class="card-title">{{ item.title }}</h5>
-                <p class="card-text">{{ item.content }}</p>
-                <a href="#" class="btn btn-primary">{{ item.created_at|date:"Y-m-d H:i" }}</a>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">{{ title }}</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="btn_link nav-link active border border-secondary rounded" aria-current="page"
+                                href="#">Место для вашей реклами</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn_link nav-link border border-secondary rounded" href="#"
+                                style="margin-left: 840px;">Text</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn_link nav-link border border-secondary rounded" href="#"
+                                style="width: 50px; height: 42px;">Text</a>
+                        </li>
+                    </ul>
                 </div>
-            
             </div>
-        {% endfor %}
+        </nav>
+
+        <div class="box border border-secondary rounded" style="height: 100%; width: 300px; margin-top: 20px;">
+            <p style="margin-left: 10px; margin-top: 10px;">Категории:</p>
+            {% for item in news %}
+            <div class="nev_btn bg-secondary rounded" style="width: 280px; margin-left: 10px;">
+                <p style="margin-left: 10px; cursor: pointer;">{{ item.category }}</p>
+            </div>
+            {% endfor %}
+            
+        </div>
+
+        <div class="boxes" style="margin-left: 600px; margin-top: -200px; margin-right: 100px;">
+            {% for item in news %}
+            <div class="box border border-secondary rounded" style="width: 600px; height: 300px;">
+                <div>
+                    <p class="bg-secondary border border-secondary rounded-top" style="width: 600px; height: 30px;">
+                        {{ item.category }}</p>
+                </div>
+                <p class="mx-auto p-3">{{ item.title }}</p>
+                {% if item.photo %}
+                <img src="{{ item.photo.url }}" class="mx-auto p-2"
+                style="width: 150px; height: 150px;">
+                {% else %}
+                <img src="https://i.pinimg.com/564x/ca/c6/77/cac677ba02e315d0d1fe0116856125e7.jpg" class="mx-auto p-2"
+                style="width: 150px; height: 150px;">
+                {%  endif %}
+                <div style="margin-left: 250px; margin-top: -200px;">
+                    <p>{{ item.content|truncatewords:30}}</p>
+                    <p style="margin-top: 30px;">{{ item.created_at|date:"Y-m-d H:i" }}</p>
+                    <div><a class="btn btn-primary bg-light text-dark border border-secondary" href="#" role="button"
+                            style="margin-left: 150px; margin-top: -75px;">Читать...</a></div>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+        <style>
+            .btn_link:hover{
+                background-color: rgb(255, 0, 191);
+            }
+
+        </style>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bun"></script>
 </body>
+
 </html>
