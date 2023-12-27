@@ -13,7 +13,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Нарокитики:</a>
+                <a class="navbar-brand" href="#">{{ title }}</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,15 +22,15 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="btn_link nav-link active border border-secondary rounded" aria-current="page"
-                                href="https://github.com/oldwizardmtb">+79663009551</a>
+                                href="{% url 'home' %}">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn_link nav-link border border-secondary rounded" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                                style="margin-left: 825px;">Жми!</a>
+                            <a class="btn_link nav-link border border-secondary rounded" href="#"
+                                style="margin-left: 846px;">Text</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn_link nav-link border border-secondary rounded" href="data:image/png;base64,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"
-                                style="width: 55px; height: 43px;">Жми!</a>
+                            <a class="btn_link nav-link border border-secondary rounded" href="#"
+                                style="width: 48px; height: 41px;">Text</a>
                         </li>
                     </ul>
                 </div>
@@ -41,41 +41,41 @@
             <p style="margin-left: 10px; margin-top: 10px;">Категории:</p>
             {% for item in categories %}
             <div class="nev_btn bg-secondary rounded" style="width: 280px; margin-left: 10px;">
-                <a href="/category/{{ item.pk }}"><p style="margin-left: 10px; cursor: pointer;">{{ item.title }}</p></a>
+                <a href="{% url 'category' item.pk %}"><p style="margin-left: 10px; cursor: pointer;">{{ item.title }}</p></a>
             </div>
             {% endfor %}
-            
         </div>
 
-        <div class="boxes" style="margin-left: 600px; margin-top: -200px; margin-right: 100px;">
+<div class="boxes" style="margin-left: 600px; margin-top: -200px; margin-right: 100px;">
+            
             {% for item in news %}
             <div class="box border border-secondary rounded" style="width: 600px; height: 300px;">
                 <div>
                     <p class="bg-secondary border border-secondary rounded-top" style="width: 600px; height: 30px;">
-                        {{ item.category }}</p>
+                        Категория: <a href="{% url 'category' item.category.pk %}">{{ item.category }}</a></p>
                 </div>
                 <p class="mx-auto p-3">{{ item.title }}</p>
                 <br>
                 {% if item.photo %}
                 <img src="{{ item.photo.url }}" class="mx-auto p-2"
-                style="width: 150px; height: 150px;">
+                style="width: 150px; height: 150px;">   
                 {% else %}
-                <img src="https://i.pinimg.com/564x/ca/c6/77/cac677ba02e315d0d1fe0116856125e7.jpg" class="mx-auto p-2"
-                style="width: 150px; height: 150px;">
-                {%  endif %}
+                <img src="https://i.pinimg.com/736x/18/49/90/18499075c298138ac6608732caca321f.jpg" class="mx-auto p-2"
+                style="width: 200px; height: 150px;">
+                {% endif %}
                 <div style="margin-left: 250px; margin-top: -200px;">
-                    <p>{{ item.content|truncatewords:30}}</p>
+                    <p> {{ item.content|truncatewords:30 }}</p>
                     <p style="margin-top: 30px;">{{ item.created_at|date:"Y-m-d H:i" }}</p>
                     <div><a class="btn btn-primary bg-light text-dark border border-secondary" href="#" role="button"
-                            style="margin-left: 200px; margin-top: -75px;">Читать...</a></div>
+                            style="margin-left: 250px; margin-top: -100px;">Читать...</a></div>
                 </div>
-            </div>
+            </div> 
             <br>
-            {% endfor %}
+            {% endfor %}  
         </div>
         <style>
             .btn_link:hover{
-                background-color: rgb(255, 0, 191);
+                background-color: gray;
             }
 
         </style>
